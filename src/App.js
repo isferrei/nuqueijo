@@ -133,7 +133,7 @@ function App() {
     );
 
     if (frete === 0) {
-      message += `Valor do frete: A calcular`;
+      message += `Valor do frete: A calcular\n\n`;
     } else message += `Valor do frete: R$` + frete + `,00\n\n`;
 
     message += `Total - R$${formatPrice(valorfinal)}\n\n`;
@@ -144,7 +144,7 @@ function App() {
 
     window
       .open(
-        `https://wa.me/553230265038/?text=${window.encodeURIComponent(
+        `https://wa.me/5532999679540/?text=${window.encodeURIComponent(
           message
         )}`,
         '_blank'
