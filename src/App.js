@@ -415,8 +415,8 @@ function App() {
         {paymentMethod.toLocaleLowerCase() === 'pix' && (
           <S.Message>
             <span>
-              Por favor, fazer pix para o CNPJ: <b>39.357.049/0001-31</b> e
-              enviar o comprovante por whatsapp
+              Por favor, fazer pix para o CPF: <b>031.749.016-85</b> e enviar o
+              comprovante por whatsapp
             </span>
           </S.Message>
         )}
