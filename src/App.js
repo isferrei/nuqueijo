@@ -22,6 +22,8 @@ function App() {
   const [paymentMethod, setPaymentMethod] = useState('');
   const [bairro, setBairro] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [troco, setTroco] = useState('');
+  const [necessitaTroco, setNecessitaTroco] = useState(false);
 
   const { data } = useQuerySubscription({
     enabled: true,
@@ -138,6 +140,9 @@ function App() {
 
     message += `Total - R$${formatPrice(valorfinal)}\n\n`;
     message += `Forma de pagamento:${paymentMethod}\n\n`;
+    message += `Necessita troco? ${
+      necessitaTroco ? `Sim, troco para: ${troco},00` : `Não`
+    }\n\n`;
     message += `Endereço: ` + endereco + ', ';
 
     message += bairro + `\n\n`;
@@ -174,8 +179,6 @@ function App() {
     setBairro(e.label);
   };
 
-  console.log(bairro);
-
   var frete = 0;
   var freteexibir = 0;
 
@@ -188,9 +191,6 @@ function App() {
   }
 
   var valorfinal = totalPrice + frete;
-
-  console.log(options);
-  console.log(paymentMethod);
 
   return (
     <div id='app'>
@@ -412,6 +412,44 @@ function App() {
             </span>
           </span>
         </S.PaymentSection>
+        {paymentMethod.toLocaleLowerCase() === 'dinheiro' && (
+          <>
+            <S.TrocoCondition>
+              <span>Necessita troco?</span>
+              <div>
+                <input
+                  type='radio'
+                  name='troco'
+                  value='sim'
+                  id='sim'
+                  onChange={() => setNecessitaTroco(true)}
+                />
+                <label for='sim'>Sim</label>
+
+                <input
+                  type='radio'
+                  name='troco'
+                  value='não'
+                  id='não'
+                  onChange={() => setNecessitaTroco(false)}
+                />
+                <label for='não'>Não</label>
+              </div>
+            </S.TrocoCondition>
+            <S.TrocoSection>
+              {necessitaTroco && (
+                <>
+                  <label>Troco para quanto?</label>
+                  <input
+                    type='text'
+                    placeholder='Insira o valor de pagamento'
+                    onChange={(e) => setTroco(e.target.value)}
+                  />
+                </>
+              )}
+            </S.TrocoSection>
+          </>
+        )}
         {paymentMethod.toLocaleLowerCase() === 'pix' && (
           <S.Message>
             <span>
