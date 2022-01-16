@@ -6,6 +6,10 @@ export const Select = styled.div`
   }
 `;
 
+export const Total = styled.div`
+  max-width: 100vw;
+`;
+
 export const TrocoCondition = styled.div`
   display: flex;
   flex-direction: column;
