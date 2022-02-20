@@ -85,7 +85,7 @@ function App() {
         }
         
       }`,
-    variables: { first: 10 },
+    variables: { first: 100 },
     token: '66fd2c4f158d431da0d95eb6458687',
   });
 
@@ -129,9 +129,9 @@ function App() {
     var endereco = prompt('Por gentileza, informe a rua para entrega:');
     formatedSelItems.forEach(
       (item) =>
-        (message += `${item.nome} - ${item.amount} x R$${formatPrice(
-          item.preco
-        )}\n`)
+      (message += `${item.nome} - ${item.amount} x R$${formatPrice(
+        item.preco
+      )}\n`)
     );
 
     if (frete === 0) {
@@ -140,9 +140,8 @@ function App() {
 
     message += `Total - R$${formatPrice(valorfinal)}\n\n`;
     message += `Forma de pagamento:${paymentMethod}\n\n`;
-    message += `Necessita troco? ${
-      necessitaTroco ? `Sim, troco para: ${troco},00` : `Não`
-    }\n\n`;
+    message += `Necessita troco? ${necessitaTroco ? `Sim, troco para: ${troco},00` : `Não`
+      }\n\n`;
     message += `Endereço: ` + endereco + ', ';
 
     message += bairro + `\n\n`;
