@@ -148,7 +148,7 @@ function App() {
 
     window
       .open(
-        `https://wa.me/5532999679540/?text=${window.encodeURIComponent(
+        `https://wa.me/553291553688/?text=${window.encodeURIComponent(
           message
         )}`,
         '_blank'
